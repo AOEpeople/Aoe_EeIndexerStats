@@ -1,0 +1,4 @@
+app/etc/modules/Aoe_EeIndexerStats.xml
+app/code/community/Aoe/EeIndexerStats
+app/design/adminhtml/default/default/layout/aoe_eeindexerstats
+app/design/adminhtml/default/default/template/aoe_eeindexerstats

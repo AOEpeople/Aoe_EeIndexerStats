@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Aoe_EeIndexerStats>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Core/>
+                <Mage_Adminhtml/>
+                <Enterprise_Mview />
+            </depends>
+        </Aoe_EeIndexerStats>
+    </modules>
+</config>

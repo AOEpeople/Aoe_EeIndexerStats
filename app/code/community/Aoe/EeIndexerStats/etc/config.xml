@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<config>
+    <modules>
+        <Aoe_EeIndexerStats>
+            <version>1.0.0</version>
+        </Aoe_EeIndexerStats>
+    </modules>
+    <global>
+        <helpers>
+            <Aoe_EeIndexerStats>
+                <class>Aoe_EeIndexerStats_Helper</class>
+            </Aoe_EeIndexerStats>
+        </helpers>
+        <models>
+            <Aoe_EeIndexerStats>
+                <class>Aoe_EeIndexerStats_Model</class>
+            </Aoe_EeIndexerStats>
+        </models>
+        <blocks>
+            <Aoe_EeIndexerStats>
+                <class>Aoe_EeIndexerStats_Block</class>
+            </Aoe_EeIndexerStats>
+        </blocks>
+    </global>
+    <adminhtml>
+        <layout>
+            <updates>
+                <aoe_eeindexerstats>
+                    <file>aoe_eeindexerstats/aoe_eeindexerstats.xml</file>
+                </aoe_eeindexerstats>
+            </updates>
+        </layout>
+    </adminhtml>
+</config>

@@ -1,0 +1,14 @@
+{
+    "name": "AOEPeople/Aoe_EeInderStats",
+    "description": "Show Indexer Stats for Magento EE",
+    "authors": [
+        {
+            "name": "Fabrizio Branca",
+            "email": "{firstname}.{lastname}@aoe.com"
+        }
+    ],
+    "type": "magento-module",
+    "require": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

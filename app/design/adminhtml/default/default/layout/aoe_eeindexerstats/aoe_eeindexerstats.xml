@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout>
+    <adminhtml_process_list>
+        <reference name="content">
+            <block type="Aoe_EeIndexerStats/Adminhtml_IndexerStats" name="aoe_eeindexerstats" />
+        </reference>
+    </adminhtml_process_list>
+</layout>
