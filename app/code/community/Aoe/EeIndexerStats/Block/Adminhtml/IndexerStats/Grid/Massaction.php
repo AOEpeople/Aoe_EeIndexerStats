@@ -14,8 +14,8 @@ class Aoe_EeIndexerStats_Block_Adminhtml_IndexerStats_Grid_Massaction extends Ma
         }
 
         $ids = array();
-        foreach ($this->getParentBlock()->getCollection() as $process) {
-            $ids[] = $process->getId();
+        foreach ($this->getParentBlock()->getCollection() as $indexer) { /* @var $indexer Varien_Object */
+            $ids[] = $indexer->getTablename();
         }
 
         return implode(',', $ids);

@@ -52,6 +52,7 @@ class Aoe_EeIndexerStats_Block_Adminhtml_IndexerStats_Grid extends Mage_Adminhtm
             'align'     => 'left',
             'index'     => 'tablename',
             'sortable'  => false,
+            'width'     => '200',
             'frame_callback' => array($this, 'decorateIndexOption')
         ));
 
@@ -85,16 +86,17 @@ class Aoe_EeIndexerStats_Block_Adminhtml_IndexerStats_Grid extends Mage_Adminhtm
 
         $this->addColumn('count_unprocessed', array(
             'header'    => Mage::helper('index')->__('Count unprocessed'),
-            'align'     => 'right,
+            'align'     => 'right',
             'index'     => 'count_unprocessed',
             'sortable'  => false,
         ));
 
         $this->addColumn('status', array(
             'header'    => Mage::helper('index')->__('Status'),
-            'align'     => 'left',
+            'align'     => 'center',
             'index'     => 'status',
             'sortable'  => false,
+            'width'     => '200',
             'frame_callback' => array($this, 'decorateStatus')
         ));
 
@@ -142,19 +144,31 @@ class Aoe_EeIndexerStats_Block_Adminhtml_IndexerStats_Grid extends Mage_Adminhtm
      */
     protected function _prepareMassaction()
     {
-        $this->setMassactionIdField('changelog_name');
+        $this->setMassactionIdField('tablename');
         $this->getMassactionBlock()->setFormFieldName('aoeeeindexerstats');
 
-        $this->getMassactionBlock()->addItem('flush', array(
-            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Flush'),
-            'url'      => $this->getUrl('*/*/flush'),
-            'selected' => true,
+        $this->getMassactionBlock()->addItem('setInvalid', array(
+            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Invalidate (will trigger full reindex on next run)'),
+            'url'      => $this->getUrl('*/*/setInvalid'),
+            'selected' => false,
         ));
 
-        $this->getMassactionBlock()->addItem('setInvalid', array(
-            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Set Invalid (will trigger full reindex on next run)'),
-            'url'      => $this->getUrl('*/*/setInvalid'),
-            'selected' => true,
+        $this->getMassactionBlock()->addItem('cleanup', array(
+            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Cleanup'),
+            'url'      => $this->getUrl('*/*/cleanup'),
+            'selected' => false,
+        ));
+
+        $this->getMassactionBlock()->addItem('reset', array(
+            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Reset'),
+            'url'      => $this->getUrl('*/*/reset'),
+            'selected' => false,
+        ));
+
+        $this->getMassactionBlock()->addItem('resetAndInvalidate', array(
+            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Reset and Invalidate'),
+            'url'      => $this->getUrl('*/*/resetAndInvalidate'),
+            'selected' => false,
         ));
 
         return $this;
