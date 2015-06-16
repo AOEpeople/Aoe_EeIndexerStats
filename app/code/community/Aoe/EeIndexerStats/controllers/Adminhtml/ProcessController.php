@@ -18,6 +18,19 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
         $this->_redirect('*/*/list');
     }
 
+    public function setValidAction() {
+        $tablenames = $this->getRequest()->getParam('aoeeeindexerstats');
+        foreach ($tablenames as $tablename) {
+            $client = Mage::getModel('enterprise_mview/client'); /* @var $client Enterprise_Mview_Model_Client */
+            $client->initByTableName($tablename);
+            $metadata = $client->getMetadata();
+            $metadata->setValidStatus();
+            $metadata->save();
+            Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Invalidated ' . $tablename));
+        }
+        $this->_redirect('*/*/list');
+    }
+
     public function cleanupAction() {
         $tablenames = $this->getRequest()->getParam('aoeeeindexerstats');
         foreach ($tablenames as $tablename) {

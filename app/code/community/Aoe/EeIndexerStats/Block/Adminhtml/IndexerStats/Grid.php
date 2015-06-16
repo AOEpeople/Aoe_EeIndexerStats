@@ -171,6 +171,12 @@ class Aoe_EeIndexerStats_Block_Adminhtml_IndexerStats_Grid extends Mage_Adminhtm
             'selected' => false,
         ));
 
+        $this->getMassactionBlock()->addItem('setValid', array(
+            'label'    => Mage::helper('Aoe_EeIndexerStats')->__('Set valid'),
+            'url'      => $this->getUrl('*/*/setValid'),
+            'selected' => false,
+        ));
+
         return $this;
     }
 }
