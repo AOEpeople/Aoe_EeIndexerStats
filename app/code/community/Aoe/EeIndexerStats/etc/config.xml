@@ -31,4 +31,15 @@
             </updates>
         </layout>
     </adminhtml>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Aoe_EeIndexerStats before="Mage_Index">Aoe_EeIndexerStats_Adminhtml</Aoe_EeIndexerStats>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
 </config>

@@ -18,4 +18,9 @@ class Aoe_EeIndexerStats_Model_Changelog extends Enterprise_Index_Model_Changelo
         return $this->_connection->fetchOne($select);
     }
 
+    public function resetChangeLog() {
+        $this->_connection->truncateTable($this->_metadata->getChangelogName());
+        $this->_metadata->setVersionId(0)->save();
+    }
+
 }
