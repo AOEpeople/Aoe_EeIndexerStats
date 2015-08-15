@@ -57,9 +57,9 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
             if ($invalidate) {
                 $metadata->setInvalidStatus();
                 $metadata->save();
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Reset and invalidated' . $tablename));
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Reset and invalidated "' . $tablename . '"'));
             } else {
-                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Reset ' . $tablename));
+                Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Reset "' . $tablename . '"'));
             }
         }
         $this->_redirect('*/*/list');
