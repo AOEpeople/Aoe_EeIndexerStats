@@ -6,6 +6,10 @@ This module adds some statistics to `System -> Index Management` for the changel
 
 ![Aoe_EeIndexerStats](doc/stats.png)
 
+This module also allow to delete the duplicate entries in changelog tables before executing each indexer
+
+![Aoe_EeIndexerStats](doc/settings.png)
+
 ## License
 [OSL v3.0](http://opensource.org/licenses/OSL-3.0)
 
