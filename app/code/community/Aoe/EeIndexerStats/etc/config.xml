@@ -15,6 +15,11 @@
             <Aoe_EeIndexerStats>
                 <class>Aoe_EeIndexerStats_Model</class>
             </Aoe_EeIndexerStats>
+            <enterprise_mview>
+                <rewrite>
+                    <client>Aoe_EeIndexerStats_Model_Client</client>
+                </rewrite>
+            </enterprise_mview>
         </models>
         <blocks>
             <Aoe_EeIndexerStats>
@@ -42,4 +47,11 @@
             </adminhtml>
         </routers>
     </admin>
+    <default>
+        <index_management>
+            <index_changelog>
+                <clean_duplicate>0</clean_duplicate>
+            </index_changelog>
+        </index_management>
+    </default>
 </config>
