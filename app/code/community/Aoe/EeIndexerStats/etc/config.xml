@@ -27,6 +27,20 @@
             </Aoe_EeIndexerStats>
         </blocks>
     </global>
+    <crontab>
+        <jobs>
+            <aoe_reset_invalidate_ee_indexer>
+                <run>
+                    <model>Aoe_EeIndexerStats/Observer::resetAndInvalidateEeIndexer</model>
+                </run>
+            </aoe_reset_invalidate_ee_indexer>
+            <aoe_reindex_ce_indexer>
+                <run>
+                    <model>Aoe_EeIndexerStats/Observer::reindexCeIndexer</model>
+                </run>
+            </aoe_reindex_ce_indexer>
+        </jobs>
+    </crontab>
     <adminhtml>
         <layout>
             <updates>
