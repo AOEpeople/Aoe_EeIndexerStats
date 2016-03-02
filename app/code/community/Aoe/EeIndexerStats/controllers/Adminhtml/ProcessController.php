@@ -9,7 +9,14 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
         $tablenames = $this->getRequest()->getParam('aoeeeindexerstats');
         foreach ($tablenames as $tablename) {
             $client = Mage::getModel('enterprise_mview/client'); /* @var $client Enterprise_Mview_Model_Client */
-            $client->initByTableName($tablename);
+
+            // backward compatibility with EE < 1.14.2.0
+            if (method_exists($client, 'initByTableName')) {
+                $client->initByTableName($tablename);
+            } else {
+                $client->init($tablename);
+            }
+
             $metadata = $client->getMetadata();
             $metadata->setInvalidStatus();
             $metadata->save();
@@ -22,7 +29,14 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
         $tablenames = $this->getRequest()->getParam('aoeeeindexerstats');
         foreach ($tablenames as $tablename) {
             $client = Mage::getModel('enterprise_mview/client'); /* @var $client Enterprise_Mview_Model_Client */
-            $client->initByTableName($tablename);
+
+            // backward compatibility with EE < 1.14.2.0
+            if (method_exists($client, 'initByTableName')) {
+                $client->initByTableName($tablename);
+            } else {
+                $client->init($tablename);
+            }
+
             $metadata = $client->getMetadata();
             $metadata->setValidStatus();
             $metadata->save();
@@ -35,7 +49,14 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
         $tablenames = $this->getRequest()->getParam('aoeeeindexerstats');
         foreach ($tablenames as $tablename) {
             $client = Mage::getModel('enterprise_mview/client'); /* @var $client Enterprise_Mview_Model_Client */
-            $client->initByTableName($tablename);
+
+            // backward compatibility with EE < 1.14.2.0
+            if (method_exists($client, 'initByTableName')) {
+                $client->initByTableName($tablename);
+            } else {
+                $client->init($tablename);
+            }
+
             $client->execute('enterprise_mview/action_changelog_clear');
             Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('Aoe_EeIndexerStats')->__('Cleaned up ' . $tablename));
         }
@@ -47,7 +68,14 @@ class Aoe_EeIndexerStats_Adminhtml_ProcessController extends Mage_Index_Adminhtm
         $connection = Mage::getSingleton('core/resource')->getConnection('core_write');
         foreach ($tablenames as $tablename) {
             $client = Mage::getModel('enterprise_mview/client'); /* @var $client Enterprise_Mview_Model_Client */
-            $client->initByTableName($tablename);
+
+            // backward compatibility with EE < 1.14.2.0
+            if (method_exists($client, 'initByTableName')) {
+                $client->initByTableName($tablename);
+            } else {
+                $client->init($tablename);
+            }
+
             $metadata = $client->getMetadata();
             $changelog = Mage::getModel('Aoe_EeIndexerStats/changelog', array(
                 'metadata' => $metadata,
