@@ -4,14 +4,15 @@ class Aoe_EeIndexerStats_Model_Client extends Enterprise_Mview_Model_Client
 {
     /**
      * Config paths for using throughout the code
+     * @var string
      */
-    const XML_PATH_CHANGELOG_CLEAN_DUPLICATE        = 'index_management/index_changelog/clean_duplicate';
+    const XML_PATH_CHANGELOG_CLEAN_DUPLICATE = 'index_management/index_changelog/clean_duplicate';
 
     /**
      * Execute action
      *
-     * @param string $classPath
-     * @param array $args
+     * @param  string $classPath
+     * @param  array  $args
      * @return Enterprise_Mview_Model_Client
      * @throws Enterprise_Mview_Exception
      */
@@ -28,29 +29,28 @@ class Aoe_EeIndexerStats_Model_Client extends Enterprise_Mview_Model_Client
         return parent::execute($classPath, $args);
     }
 
-
     /**
      * Clean duplicate entity data from changelog tables before running the indexing
      *
-     * @param Enterprise_Mview_Model_Metadata $metadata
+     * @param  Enterprise_Mview_Model_Metadata $metadata
      * @return Enterprise_Mview_Model_Client
      */
     protected function _cleanChangelogTablesBeforeIndexing(Enterprise_Mview_Model_Metadata $metadata)
     {
-        $_connection = $this->_getDefaultConnection();
+        $connection = $this->_getDefaultConnection();
 
-        $subSelect = $_connection->select()
+        $subSelect = $connection->select()
             ->from(array('cl' => $metadata->getChangelogName()), array('version_id'=>'MAX(cl.version_id)'))
             ->where('cl.version_id > ?', $metadata->getVersionId())
             ->group('cl.'.$metadata->getKeyColumn());
 
-        $select = $_connection->select()->from($subSelect, array('*'));
+        $select = $connection->select()->from($subSelect, array('*'));
 
         $whereCondition = array(
-            $_connection->quoteInto('version_id > ?', $metadata->getVersionId()),
+            $connection->quoteInto('version_id > ?', $metadata->getVersionId()),
             'version_id NOT IN (' . $select . ')',
         );
-        $_connection->delete($metadata->getChangelogName(),  implode(' AND ', $whereCondition));
+        $connection->delete($metadata->getChangelogName(), implode(' AND ', $whereCondition));
 
         return $this;
     }
